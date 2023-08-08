@@ -1,29 +1,9 @@
-# Compiled Lua sources
-luac.out
+# If you prefer the allow list template instead of the deny list, see community template:
+# https://github.com/github/gitignore/blob/main/Lua.gitignore
 
 # luarocks build files
-*.src.rock
 *.zip
 *.tar.gz
-
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
 
 # Shared objects (inc. Windows DLLs)
 *.dll
@@ -39,3 +19,6 @@ luac.out
 *.x86_64
 *.hex
 
+# yock
+/yock_modules
+include
