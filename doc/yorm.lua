@@ -6,8 +6,6 @@
 
 ---@meta _
 
----@alias field_type table
-
 ---@class yorm_field
 ---@field type field_type
 ---@field auto_increment? boolean
@@ -55,3 +53,63 @@
 ---@field db fun(self: yorm_driver, name: string): yorm_db
 ---@field set_exec fun(self: yorm_driver, cb: fun(sql: string): string, err)
 ---@field set_query fun(self: yorm_driver, cb: fun(sql: string): table, err)
+
+---@enum field_type
+field_type = {
+    bool = {
+        string = "BOOL",
+        fmt = function(n)
+            return n
+        end
+    },
+    integer = {
+        string = "INTEGER",
+        fmt = function(n)
+            return n
+        end
+    },
+    bigint = {
+        string = "BIGINT",
+        fmt = function(n)
+            return n
+        end
+    },
+    real = {
+        string = "REAL",
+        fmt = function(n)
+            return n
+        end
+    },
+    text = {
+        string = "TEXT",
+        fmt = function(in_)
+            return string.format([['%s']], in_)
+        end
+    },
+    varchar = function(n)
+        return {
+            string = string.format("varchar(%d)", n),
+            fmt = function(in_)
+                return string.format([['%s']], in_)
+            end
+        }
+    end,
+    blob = {
+        string = "BLOB",
+        fmt = function(n)
+            return n
+        end
+    },
+    datetime = {
+        string = "DATATIME",
+        fmt = function(n)
+            return n
+        end
+    },
+    double = {
+        string = "DOUBLE",
+        fmt = function(n)
+            return n
+        end
+    }
+}
